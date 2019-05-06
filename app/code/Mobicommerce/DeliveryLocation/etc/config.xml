@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.Mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mobi_deliverylocation>
+            <validate>
+                <errormessage>Sorry!, We can not shipp on selected address.</errormessage>
+            </validate>
+        </mobi_deliverylocation>
+    </default>
+</config>

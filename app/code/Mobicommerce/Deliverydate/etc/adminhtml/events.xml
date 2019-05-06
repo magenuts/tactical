@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="core_layout_render_element">
+        <observer name="mobicommerce_deliverydate" instance="Mobicommerce\Deliverydate\Observer\Admin\ViewInformation" />
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="mobicommerce_deliverydate" instance="Mobicommerce\Deliverydate\Observer\Admin\Order\Save" />
+    </event>
+</config>

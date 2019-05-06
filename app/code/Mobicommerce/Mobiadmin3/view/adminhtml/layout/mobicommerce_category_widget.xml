@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Magento_Backend::extjs/ext-tree.js"/>
+		<script src="Magento_Backend::extjs/fix-defer.js"/>
+		<script src="Magento_Backend::extjs/ext-tree-checkbox.js"/>
+		<css src="Magento_Backend::extjs/resources/css/ext-all.css"/>
+		<css src="Magento_Backend::extjs/resources/css/ext-all.css"/>
+        <css src="Mobicommerce_Mobiadmin3::lib/prototype/windows/themes/magento.css"/>
+        <css src="Magento_Backend::extjs/resources/css/ytheme-magento.css"/>
+		<css src="Magento_Backend::extjs/resources/css/ext-all.css"/>
+		<css src="prototype/windows/themes/default.css"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Magento\Catalog\Block\Adminhtml\Category\Tree" name="category.tree" template="Mobicommerce_Mobiadmin3::mobiadmin3/categorywidget/left_nav.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block template="Mobicommerce_Mobiadmin3::mobiadmin3/categorywidget/grid.phtml" class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Category\Widget" name="category_widget"/>
+        </referenceContainer>
+    </body>
+</page>

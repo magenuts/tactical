@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MB Vienas bitas. All rights reserved.
+ * @website    www.magetrend.com
+ * @package    MT Email for M2
+ * @author     Edvinas Stulpinas <edwin@magetrend.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="extjs/resources/css/ext-all.css"/>
+        <remove src="extjs/resources/css/ytheme-magento.css"/>
+        <remove src="css/styles-old.css"/>
+        <remove src="css/styles.css"/>
+        <remove  src="requirejs/require.js"/>
+        <remove  src="media/styles.css"/>
+        <css src="Magetrend_Email::css/mteditor/bootstrap.min.css"/>
+        <css src="Magetrend_Email::css/mteditor/jquery-ui.css"/>
+        <css src="Magetrend_Email::css/mteditor/jquery.fileupload.css"/>
+        <css src="Magetrend_Email::css/mteditor/mteditor.css"/>
+        <css src="Magetrend_Email::css/mteditor/colorpicker.css"/>
+        <css src="Magetrend_Email::css/mteditor/popup.css"/>
+
+        <link src="Magetrend_Email::js/mteditor/jquery-2.1.3.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery-2.1.3.js"/>
+        <link src="Magetrend_Email::js/mteditor/bootstrap.min.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery.cookie.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery-ui.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery.ui.widget.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery.iframe-transport.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery.fileupload.js"/>
+        <link src="Magetrend_Email::js/mteditor/text_edit_helper.js"/>
+        <link src="Magetrend_Email::js/mteditor/colorpicker.js"/>
+        <link src="Magetrend_Email::js/mteditor/popup.js"/>
+        <link src="Magetrend_Email::js/mteditor/helper/save.js"/>
+        <link src="Magetrend_Email::js/mteditor/jquery.metisMenu.js"/>
+        <link src="Magetrend_Email::js/mteditor/editor.js"/>
+    </head>
+    <body>
+        <referenceContainer name="after.body.start" remove="true"/>
+        <referenceContainer name="menu.wrapper" remove="true"/>
+        <referenceContainer name="notices.wrapper" remove="true"/>
+        <referenceContainer name="legal" remove="true"/>
+        <referenceContainer name="page.menu" remove="true"/>
+        <referenceContainer name="header" remove="true"/>
+        <referenceBlock name="global.notices" remove="true"/>
+        <referenceBlock name="page.messages" remove="true"/>
+        <referenceBlock name="page.title" remove="true"/>
+        <referenceBlock name="user" remove="true"/>
+        <referenceBlock name="global.search" remove="true"/>
+        <referenceBlock name="notification.messages" remove="true"/>
+        <referenceContainer name="page.content">
+            <block name="mteditor.content" class="Magetrend\Email\Block\Adminhtml\Mteditor" template="Magetrend_Email::mteditor.phtml">
+            </block>
+        </referenceContainer>
+        <referenceBlock name="footer" remove="true"/>
+
+    </body>
+</page>

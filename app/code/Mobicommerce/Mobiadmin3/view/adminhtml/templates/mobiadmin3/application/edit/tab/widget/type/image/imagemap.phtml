@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/Article">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/css/imagemap.css');?>">
+		<link type="text/css" rel="stylesheet" href="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/css/transformable.css');?>">
+		<script gapi_processed="true" src="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/plusone.js');?>" type="text/javascript"></script>
+		<script type="text/javascript" src="<?php  echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/jquery-1.js');?>"></script>
+		<script type="text/javascript" src="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/jquery.js');?>?v=<?php echo uniqid(); ?>"></script>
+		<script type="text/javascript" src="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/transformable.js');?>"></script>
+		<script type="text/javascript" src="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/canvas.js');?>?v=<?php echo uniqid(); ?>"></script>
+		<script type="text/javascript" src="<?php echo $this->getViewFileUrl('Mobicommerce_Mobiadmin3::mobiadmin3/imagemap/js/mainFunctions.js');?>"></script>
+
+		<script type="text/javascript">
+			$(function(){
+				$('.steps').slice(1).hide();
+				$('.startArrow').animate({'margin-top':'-10px','margin-left':'-20px'}).animate({'margin-top':'0px','margin-left':'0px'}).animate({'margin-top':'-10px','margin-left':'-20px'}).animate({'margin-top':'0px','margin-left':'0px'}).animate({'margin-top':'-10px','margin-left':'-20px'}).animate({'margin-top':'0px','margin-left':'0px'});
+				$('#imageURL').focus(function(){
+					$('.startArrow').fadeOut();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="mainContainer">
+	        <div id="content">
+	            <a id="start"></a>
+	            <div id="application">
+					<input id="imageURL" type="hidden" value="<?php echo $this->getRequest()->getParam('image_url')?>">
+	                <div>                    
+	                    <div id="canvasContatiner"></div>
+	                    <div id="linkAdder">
+	                        <strong>Link to:</strong>
+	                        <input class="linkEditor" id="linkURL" style="width:200px;" type="text" readonly onclick="parent.deeplinkImageWidget()">
+	                        <br>
+	                        <small class="mbsmall">Link the selected image area to specific category, product, cms page</small>
+	                        <select class="linkEditor" id="linkTarget" name="linkTarget" style="display:none;">
+	                            <option selected="selected" value="_self">Same Window</option>
+	                        </select>
+	                    </div>
+	                    <button id="step2End">Click here to finish</button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<script>
+		var imgURL = "<?php echo $this->getStoreMediaUrl(); ?><?php echo $this->getRequest()->getParam('image_url')?>";
+		if(imgURL!=''){
+			var newImg = document.createElement('img');
+			$(newImg).attr({
+				'src': imgURL
+				}).load(function(){
+					$('.doneMark').eq(0).fadeIn(function(){
+						$('#step1').slideUp(function(){
+							$('#step2').slideDown();
+						});
+					});
+					
+					var canvas = document.createElement('div');
+					$(canvas).attr('id','canv').appendTo('#canvasContatiner').css({
+						'width': newImg.width,
+						'height': newImg.height,
+						'background': 'url('+imgURL+') 0 0 no-repeat'
+					});
+					$.data(canvas,'realSize',{'width':newImg.width,'height':newImg.height});
+					$.data(canvas,'url', imgURL);
+					$.data(canvas,'imgPath', "<?php echo $this->getRequest()->getParam('image_url')?>");
+					assignCanvas();
+					drawPreviousRect(canvas);
+				}).error(function(){
+					alert('Not a valid image, try a different URL..');
+				});
+		}
+
+		function drawPreviousRect(canvas)
+		{
+			<?php
+			if(isset($_REQUEST['map_coords']) && !empty($_REQUEST['map_coords'])){
+				$coords = $_REQUEST['map_coords'];
+				$coords = explode('__SEPRATER__', $coords);
+				$hrefs = explode('__SEPRATER__', $_REQUEST['map_href']);
+				if(!empty($coords)){
+					foreach($coords as $_key => $_coord){
+						$__coord = explode(',', $_coord);
+						?>
+						var Selection = document.createElement("div");
+						$(Selection).addClass("selection").css({
+							top: <?php echo $__coord[1]; ?>,
+							left: <?php echo $__coord[0]; ?>,
+							width: "<?php echo ($__coord[2] - $__coord[0]); ?>px",
+							height: "<?php echo ($__coord[3] - $__coord[1]); ?>px"
+						});
+						$(Selection).appendTo(canvas);
+						$(Selection).removeClass("selection").addClass("theBox").transformable({
+							unselectHandler: "unSelectBoxes",
+							boxSelectHandler: "onBoxSelect",
+							boxDeleteHandler: "onBoxDelete"
+						}).hover(function() {
+							if (!$(this).hasClass("selected")) {
+								$(this).stop().animate({
+									opacity: "1"
+								}, "fast");
+							}
+						}, function() {
+							if (!$(this).hasClass("selected")) {
+								$(this).stop().animate({
+									opacity: "0.8"
+								}, "fast");
+							}
+						});
+						$(Selection).removeClass('selected');
+						$.data(Selection,'link',{
+							'href': "<?php echo isset($hrefs[$_key]) ? $hrefs[$_key] : ''; ?>",
+							'alt': "",
+							'target': ""
+							});
+						<?php
+					}
+				}
+			}
+			?>
+		}
+		</script>
+	</body>
+</html>

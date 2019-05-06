@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.Mobicommerce.com)
+ * @package Mobicommerce_GroceryService
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="mobicommerce_webservice_controller_homepage_config_after">
+        <observer name="modify_homepage_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyHomepageConfigService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_catalog_product_listing_after">
+        <observer name="modify_product_listing_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyProductListingService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_catalog_search_listing_after">
+        <observer name="modify_search_listing_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyProductListingService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_wishlist_listing_after">
+        <observer name="modify_wishlist_listing_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyProductListingService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_catalog_product_detail_after">
+        <observer name="modify_product_detail_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyProductDetailService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_checkout_cart_after">
+        <observer name="modify_checkout_cart_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_cart_saveshipping_after">
+        <observer name="modify_checkout_cart_payment_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_checkout_cart_shippingmethod_load_after">
+        <observer name="modify_checkout_cart_payment_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_checkout_cart_shippingmethod_save_after">
+        <observer name="modify_checkout_cart_payment_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_checkout_cart_payment_load_after">
+        <observer name="modify_checkout_cart_payment_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>    
+    <event name="mobicommerce_webservice_controller_checkout_cart_payment_save_after">
+        <observer name="modify_checkout_cart_payment_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>    
+    <event name="mobicommerce_webservice_controller_add_to_cart_after">
+        <observer name="modify_add_to_cart_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>    
+    <event name="mobicommerce_webservice_controller_cart_update_item_after">
+        <observer name="modify_add_to_cart_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_cart_delete_item_after">
+        <observer name="modify_cart_delete_item_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyCheckoutCartService" />
+    </event>
+    <event name="mobicommerce_webservice_controller_order_detail_after">
+        <observer name="modify_order_detail_grocery_service" instance="Mobicommerce\GroceryService\Observer\ModifyOrderDetailService" />
+    </event>
+</config>

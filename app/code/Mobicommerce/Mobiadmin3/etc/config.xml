@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mobisociallogin3>
+            <fblogin>
+                <is_active>1</is_active>
+                <title>Login with Facebook</title>
+                <facebook_appid>408928736120784</facebook_appid>
+                <facebook_appname>MobiCommerce Demo</facebook_appname>
+                <sort_order>1</sort_order>
+            </fblogin>
+            <gologin>
+                <is_active>1</is_active>
+                <title>Login with Google</title>
+                <google_key>20:55:05:11:D0:3D:B6:1B:FF:79:3D:02:1E:91:7B:1B:66:60:1C:DA</google_key>
+                <google_clientid>881306584774-gn175pq2op8tgn2fc125s38hho48k26k.apps.googleusercontent.com</google_clientid>
+                <sort_order>2</sort_order>
+            </gologin>
+            <twlogin>
+                <is_active>0</is_active>
+                <title>Login with Twitter</title>
+                <twitter_fabric_key></twitter_fabric_key>
+                <twitter_consumer_key></twitter_consumer_key>
+                <twitter_consumer_secret></twitter_consumer_secret>
+                <sort_order>3</sort_order>
+            </twlogin>
+        </mobisociallogin3>
+    </default>
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <block class="Mobicommerce\Deliverydate\Block\Adminhtml\Dinterval\Edit\Tabs" name="dinterval_tabs">
+                <block class="Mobicommerce\Deliverydate\Block\Adminhtml\Dinterval\Edit\Tab\General" name="mobicommerce_deliverydate_dinterval_edit_tab_general" />
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">mobicommerce_deliverydate_dinterval_edit_tab_general</argument>
+                    <argument name="block" xsi:type="string">mobicommerce_deliverydate_dinterval_edit_tab_general</argument>
+                </action>
+
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Mobicommerce\Deliverydate\Block\Adminhtml\Dinterval\Edit" name="dinterval_edit"/>
+        </referenceContainer>
+    </body>
+</page>

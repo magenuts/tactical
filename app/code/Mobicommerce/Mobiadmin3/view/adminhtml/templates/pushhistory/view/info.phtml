@@ -1,0 +1,53 @@
+<?php
+$notification = $block->getNotificationDetail();
+?>
+
+<section class="admin__page-section order-view-account-information">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Push Notification Detail')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+                <tr>
+                    <th><?= $block->escapeHtml(__('ID')) ?></th>
+                    <td><?= $block->escapeHtml($notification->getId()) ?></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Date Sent')) ?></th>
+                    <td><span><?= $block->formatDate($block->getOrderAdminDate($notification->getDateSubmitted()), \IntlDateFormatter::MEDIUM, true); ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Device Type')) ?></th>
+                    <td><span><?= $block->escapeHtml($block->getDeviceType($notification->getDeviceType())) ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Title')) ?></th>
+                    <td><span><?= $block->escapeHtml($notification->getHeading()) ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Message')) ?></th>
+                    <td><span><?= $block->escapeHtml($notification->getMessage()) ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Send To')) ?></th>
+                    <td><span><?= $block->escapeHtml($block->getSendToType($notification->getSendToType())) ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Deeplink')) ?></th>
+                    <td><span><?= $block->escapeHtml($notification->getDeeplink()) ?></span></td>
+                </tr>
+                <tr>
+                    <th><?= $block->escapeHtml(__('Image')) ?></th>
+                    <td>
+                        <?php if($notification->getImage()): ?>
+                            <img src="<?= $notification->getImage() ?>" alt="" height="100" />
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+</section>

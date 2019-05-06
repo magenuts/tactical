@@ -1,0 +1,15 @@
+.support-column{}
+.support-column li{padding:0 0 10px 0; list-style: none}
+.support-column li img{vertical-align:top; padding:0 5px 0 0;}
+.icon-sortable-move {cursor: pointer;display: inline-block;width: 14px;height: 14px;line-height: 14px;vertical-align: text-top;background-image: url(images/glyphicons-halflings.png);background-position: -168px -72px;background-repeat: no-repeat;margin-top: 3px;}
+
+
+/* patch need to remove once resolved */
+.category-grid .page-actions,
+.product-grid .page-actions
+{
+	display: none;
+}
+
+.mobi_position_textbox { width: 50px !important; }
+/*.mobi_fileupload_without_helptext { width: 94px !important; }*/

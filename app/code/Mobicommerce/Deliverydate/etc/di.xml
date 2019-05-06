@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mobideliverydate_holidays_listing_data_source" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Holidays\Grid\Collection</item>
+                <item name="mobideliverydate_dinterval_listing_data_source" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Dinterval\Grid\Collection</item>
+                <item name="mobideliverydate_tinterval_listing_data_source" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Tinterval\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Sales\Model\OrderRepository">
+        <plugin sortOrder="1" name="mobicommerceDeliverydateOrderRepository" type="\Mobicommerce\Deliverydate\Plugin\Order\OrderRepositoryPlugin"/>
+    </type>
+    <virtualType name="Mobicommerce\Deliverydate\Model\ResourceModel\Holidays\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_mobideliverydate_holidays</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Holidays</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mobicommerce\Deliverydate\Model\ResourceModel\Dinterval\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_mobideliverydate_dinterval</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Dinterval</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mobicommerce\Deliverydate\Model\ResourceModel\Tinterval\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_mobideliverydate_tinterval</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Deliverydate\Model\ResourceModel\Tinterval</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Mobicommerce\Deliverydate\Ui\Component\Listing\Column\MonthWithEach" type="Mobicommerce\Deliverydate\Ui\Component\Listing\Column\Month">
+        <arguments>
+            <argument name="eachMonthAvailable" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="save-in-quote" type="Mobicommerce\Deliverydate\Plugin\Checkout\ShippingInformationManagement"/>
+    </type>
+    <type name="Magento\Sales\Block\Items\AbstractItems">
+        <plugin name="Mobicommerce_Delivarydate::OrderEmail" type="Mobicommerce\Deliverydate\Plugin\Order\Email" />
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="MobideliverydateSaveOrder" type="Mobicommerce\Deliverydate\Plugin\Order\OrderSave"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Invoice">
+        <plugin name="Mobicommerce_Delivarydate::PrintInvoice" type="Mobicommerce\Deliverydate\Plugin\Order\InvoicePdf" />
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Shipment">
+        <plugin name="Mobicommerce_Delivarydate::PrintShipment" type="Mobicommerce\Deliverydate\Plugin\Order\ShipmentPdf" />
+    </type>
+</config>

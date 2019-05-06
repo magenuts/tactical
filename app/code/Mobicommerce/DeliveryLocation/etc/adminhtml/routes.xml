@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="mobi_delivery_location" frontName="mobi_delivery_location">
+            <module name="Mobicommerce_DeliveryLocation" />
+        </route>
+    </router>
+</config>

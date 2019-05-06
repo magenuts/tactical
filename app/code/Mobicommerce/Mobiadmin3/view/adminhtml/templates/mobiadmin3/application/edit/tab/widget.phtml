@@ -1,0 +1,113 @@
+<?php
+$id = $this->getRequest()->getParam('id');
+$versionType = '002';
+if(!in_array($versionType, ['001', '002']))
+	$versionType = '001';
+?>
+<input type="hidden" name="widgetChange" id="widgetChange" value="0">
+<div class="home-widget-content">
+	<div class="content-header">
+		<table cellspacing="0" class="grid-header">
+			<tr>	
+				<td class="a-right">
+					<button onclick="showwidgets()" class="scalable save" type="button"><span><?php echo __('Widgets List')?></span></button>
+					<?php if($versionType == '002'): ?>
+						<button onclick="createwidget()" class="scalable save" type="button"><span><?php echo __('Add New Widget')?></span></button>
+					<?php endif; ?>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="widget-lists">
+	<?php echo $block->getLayout()->createBlock('\Magento\Backend\Block\Widget')->setTemplate('Mobicommerce_Mobiadmin3::mobiadmin3/application/edit/tab/widget/widgetlist.phtml')->toHtml();?>
+</div>
+<div class="content-widget-new1"></div>
+
+<script language="javascript">
+	require([
+	    "jquery",
+	    "prototype"
+	    ], function (jQuery, modal) {
+	});
+
+	function createwidget(){
+		markWidgetChange();
+		new Ajax.Request("<?php echo $block->getUrl('mobicommerce/widget/createwidget')?>", {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {				    
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+		            jQuery('.content-widget-new').html(json.widget_new_block);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+	}
+
+	function showwidgets(){
+		markWidgetChange();
+		var param = "<?php $this->getRequest()->getParam('store');?>";
+		var appid = "<?php $id;?>";
+		var url ="<?php echo $block->getUrl('mobicommerce/widget/widgetlist')?>store/"+"<?=$this->getRequest()->getParam('store')?>"+'/id/'+"<?php echo $id;?>";
+        
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {				    
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+		            jQuery('.widget-lists').html(json.widget_list_block);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+	}
+
+	function markWidgetChange(){
+		jQuery('#widgetChange').val('1');
+	}
+    
+    function editbuttonclick(obj,event){ 
+		markWidgetChange();
+        
+		event.preventDefault();
+		var editwidgeturl = jQuery(obj).attr('href');
+		new Ajax.Request(editwidgeturl, {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {				    
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+					jQuery('.content-widget-new').html(json.widget_block_content);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+	}
+</script>

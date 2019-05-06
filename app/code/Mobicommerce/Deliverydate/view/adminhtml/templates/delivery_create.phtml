@@ -1,0 +1,14 @@
+<?php
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+?>
+</section><section class="admin__page-section mobicommerce-deliverydate">
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo __('Delivery Information') ?></span>
+    </div>
+    <?php foreach ($this->getFormElements() as $element): ?>
+        <?php echo $element->toHtml(); ?>
+    <?php endforeach; ?>

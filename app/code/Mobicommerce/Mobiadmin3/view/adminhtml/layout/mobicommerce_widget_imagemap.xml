@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root"  >
+        <block output="1" class="Magento\Backend\Block\Template" >
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Mobicommerce_Mobiadmin3::mobiadmin3/application/edit/tab/widget/type/image/imagemap.phtml</argument>
+            </action>
+        </block>
+    </container>
+</layout>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+?>
+<section class="admin__page-section mobicommerce-deliverydate">
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo __('Delivery Information') ?></span>
+        <?php if ($this->isOrderViewPage()): ?>
+            <div class="actions"><a href="<?php echo $this->getEditUrl();?>">Edit</a></div>
+        <?php endif;?>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item" style="width: 49%;">
+            <?php $fields = $this->getDeliveryDateFields(); ?>
+            <?php if (!empty($fields)): ?>
+                <table class="admin__table-secondary">
+                    <?php foreach ($fields as $field): ?>
+                        <tr>
+                            <td><?php echo $field['label']; ?></td>
+                            <td style="text-align: right;"><?php echo $field['value']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,117 @@
+"Send after","Send after"
+Sender,Sender
+"Email template","Email template"
+"Has coupon","Has coupon"
+More,More
+"%1 (Default)","%1 (Default)"
+Preview,Preview
+Delete,Delete
+"Send Again","Send Again"
+Sent,Sent
+Error,Error
+"Clear Logs","Clear Logs"
+"Are you sure you want to clear all logs?","Are you sure you want to clear all logs?"
+AbandonedCart,AbandonedCart
+"Clear success.","Clear success."
+"There is an error occurs. Please try again later.","There is an error occurs. Please try again later."
+"Delete success.","Delete success."
+Logs,Logs
+"Email Preview","Email Preview"
+"An error occurred. The email template can not be opened for preview.","An error occurred. The email template can not be opened for preview."
+Report,Report
+"Email send successfully.","Email send successfully."
+"There is an error occur when sending email. Please try again later.","There is an error occur when sending email. Please try again later."
+"You can't used link","You can't used link"
+"Recovery Success.","Recovery Success."
+"You can't login.","You can't login."
+"Please login with %1","Please login with %1"
+"-- Please Select --","-- Please Select --"
+Day,Day
+Month,Month
+From,From
+To,To
+Apply,Apply
+Image,Image
+"Product Name","Product Name"
+Qty,Qty
+Price,Price
+"Order Total","Order Total"
+"Your cart here","Your cart here"
+"%store_name is conserving your shopping list","%store_name is conserving your shopping list"
+"Hello %name,","Hello %name,"
+"We’re here to confirm your forgotten shopping cart at our shop recently. Do those items still have a warm place in your wish list?","We’re here to confirm your forgotten shopping cart at our shop recently. Do those items still have a warm place in your wish list?"
+"Please come back soon if you need anything from our service. %store_name is looking forward to hearing your confirmation soon.","Please come back soon if you need anything from our service. %store_name is looking forward to hearing your confirmation soon."
+"We truly appreciate the time you spending with us.","We truly appreciate the time you spending with us."
+"We are leaving this coupon","We are leaving this coupon"
+"as our special discount.","as our special discount."
+"It will be valid to %to","It will be valid to %to"
+"Best regards,","Best regards,"
+%store_name,%store_name
+"Oh. Is this your cart in %store_name","Oh. Is this your cart in %store_name"
+"Hello, I’m %sender from %store_name and hopefully, you haven’t forgotten us as well as the shopping cart you left in our store recently. Thus, we would love to be sure that below items will catch your attention again.","Hello, I’m %sender from %store_name and hopefully, you haven’t forgotten us as well as the shopping cart you left in our store recently. Thus, we would love to be sure that below items will catch your attention again."
+"Or if anything got you confused in shopping process? Feel free to contact again to discuss problems you may have. Your satisfaction is the best product we desire to deliver.","Or if anything got you confused in shopping process? Feel free to contact again to discuss problems you may have. Your satisfaction is the best product we desire to deliver."
+"Friendly remind  that the coupon","Friendly remind  that the coupon"
+"is waiting for you.","is waiting for you."
+"The expiration date will be lasted until %to","The expiration date will be lasted until %to"
+"Thank you so much and have a nice day.","Thank you so much and have a nice day."
+"Regards,","Regards,"
+"Sense of urgency in your cart","Sense of urgency in your cart"
+"Have a nice day %name,","Have a nice day %name,"
+"Oh. %store_name has to tell you this secret that all the items left in your shopping cart few days ago are becoming the hot trend recently, and there are only few remaining in our stock at the moment. So hurry up and keep yourself a copy right today! If you are still interested in those products","Oh. %store_name has to tell you this secret that all the items left in your shopping cart few days ago are becoming the hot trend recently, and there are only few remaining in our stock at the moment. So hurry up and keep yourself a copy right today! If you are still interested in those products"
+"Come back with us soon and we promise to assist you in purchasing process as fast as possible.","Come back with us soon and we promise to assist you in purchasing process as fast as possible."
+"You will be able to receive a coupon","You will be able to receive a coupon"
+"as our appreciation.","as our appreciation."
+"Note in mind that it can be only valid to %to","Note in mind that it can be only valid to %to"
+"See you again!","See you again!"
+"Kind regards,","Kind regards,"
+"Do you need any help for your cart?","Do you need any help for your cart?"
+"Have a nice day %name ! I noticed that you have added several of great items but haven’t complete the checkout yet? So I want to make sure if below is your forgotten wishlist","Have a nice day %name ! I noticed that you have added several of great items but haven’t complete the checkout yet? So I want to make sure if below is your forgotten wishlist"
+"How about receiving the coupon","How about receiving the coupon"
+"discount to enlighten your day with us?","discount to enlighten your day with us?"
+"It’ll be available to %to","It’ll be available to %to"
+"Thanks for thinking about %store_name‘s offers again. We hope to see your response soon.","Thanks for thinking about %store_name‘s offers again. We hope to see your response soon."
+"Warmest regards,","Warmest regards,"
+"Sweet deal from %store_name","Sweet deal from %store_name"
+"Hi %name ! Great deals between us are not over yet!","Hi %name ! Great deals between us are not over yet!"
+"We care about your smile and your pleasure. Please let us give it more chances. %store_name wonders if this item list may recall your interest.","We care about your smile and your pleasure. Please let us give it more chances. %store_name wonders if this item list may recall your interest."
+"Products are not the only value we wish to deliver, but also your happiness.","Products are not the only value we wish to deliver, but also your happiness."
+"How about we could offer you the coupon","How about we could offer you the coupon"
+"in order to encourage you to complete the left shopping cart?","in order to encourage you to complete the left shopping cart?"
+"Hurry up since this coupon is only valid until %to","Hurry up since this coupon is only valid until %to"
+"Select Date","Select Date"
+"Please enter from < to","Please enter from < to"
+"Please submit again","Please submit again"
+"Report Time","Report Time"
+"Abandoned cart","Abandoned cart"
+Recover,Recover
+"Abandoned Cart Email Report","Abandoned Cart Email Report"
+"Abandoned Cart Email","Abandoned Cart Email"
+"General Configuration","General Configuration"
+Enabled,Enabled
+"Select Yes to enable this module.","Select Yes to enable this module."
+Email,Email
+"Ex: 1d 4h 9m","Ex: 1d 4h 9m"
+Analytics,Analytics
+Source,Source
+Medium,Medium
+Name,Name
+Term,Term
+Content,Content
+Coupon,Coupon
+Rule,Rule
+"Please select rule to use this feature.","Please select rule to use this feature."
+Valid,Valid
+Hour(s),Hour(s)
+"Code Length","Code Length"
+"Excluding prefix, suffix and separators. If empty default 5","Excluding prefix, suffix and separators. If empty default 5"
+"Code Format","Code Format"
+"Code Prefix","Code Prefix"
+"Code Suffix","Code Suffix"
+"Dash Every X Characters","Dash Every X Characters"
+ID,ID
+Subject,Subject
+Receiver,Receiver
+"Sequent number","Sequent number"
+"Sent Date","Sent Date"
+Status,Status
+Action,Action

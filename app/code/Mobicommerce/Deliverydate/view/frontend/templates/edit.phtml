@@ -1,0 +1,72 @@
+<?php
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+?>
+<?php /** @var $block \Mobicommerce\Deliverydate\Block\Deliverydate\Edit */ ?>
+<?php $_order = $block->getOrder() ?>
+<?php $_deliveryDate = $block->getDeliveryDate() ?>
+<form class="form form-edit-account" action="<?php /* @escapeNotVerified */ echo $block->getSaveUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" autocomplete="off">
+    <fieldset class="fieldset info">
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Order Information') ?></span></legend><br>
+        <div class="field">
+            <label class="label"><span><?php /* @escapeNotVerified */ echo __('Order #') ?></span></label>
+            <div class="control">
+                <span><?php /* @escapeNotVerified */ echo $_order->getRealOrderId() ?></span>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+            <div class="control">
+                <span><?php /* @escapeNotVerified */ echo $_order->getCustomerEmail() ?></span>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label"><span><?php /* @escapeNotVerified */ echo __('Current Delivery Date') ?></span></label>
+            <div class="control">
+                <span><?php /* @escapeNotVerified */ echo $_deliveryDate->getFormattedDate() ?></span>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="fieldset deliverydate">
+        <?php echo $block->getBlockHtml('formkey')?>
+        <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Delivery Date') ?></span></legend><br>
+        <div class="field required">
+            <label class="label"><span><?php /* @escapeNotVerified */ echo __('New Delivery Date') ?></span></label>
+            <div class="control" id="delivfield">
+                <input type="text" class="input-date required-entry" name="date" id="mobideliverydate_date"
+                       data-input="mobideliverydate_date"
+                       data-validate="{required:true}"
+                       autocomplete="off" />
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Save') ?>"><span><?php /* @escapeNotVerified */ echo __('Save') ?></span></button>
+        </div>
+        <?php if ($block->getBackUrl()) : ?>
+        <div class="secondary">
+            <a class="action" href="<?php echo $block->escapeUrl($block->getBackUrl()) ?>"><span><?php /* @escapeNotVerified */ echo $block->getBackTitle() ?></span></a>
+        </div>
+        <?php endif; ?>
+    </div>
+</form>
+<script>
+    require([
+        "jquery",
+        "Mobicommerce_Deliverydate/js/edit/date",
+        "mage/mage",
+        "mage/calendar"
+    ], function($, amdate){
+        var dataForm = $('#form-validate');
+        dataForm.mage('validation');
+        var amdateObj = amdate(<?php /* @escapeNotVerified */ echo $block->getMobicommerceCalendarJsonConfig()?>);
+        var config = <?php /* @escapeNotVerified */ echo $block->getCalendarJsonConfig()?>;
+        config.beforeShowDay = amdateObj.restrictDates.bind(amdateObj);
+        $('#mobideliverydate_date').calendar(config);
+    });
+</script>

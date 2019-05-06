@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="mobideliverydate_admin_email_template" label="Delivery Date Admin Notification" file="mobicommerce_deliverydate_notification_email.html" type="html" module="Mobicommerce_Deliverydate" area="adminhtml"/>
+    <template id="mobideliverydate_general_email_template" label="Delivery Date Notification" file="mobicommerce_deliverydate_notification_email.html" type="html" module="Mobicommerce_Deliverydate" area="frontend"/>
+    <template id="mobideliverydate_reminder_email_template" label="Delivery Date Reminder" file="mobicommerce_deliverydate_reminder_email.html" type="html" module="Mobicommerce_Deliverydate" area="frontend"/>
+</config>

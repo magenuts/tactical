@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.Mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="mobicommerce_webservice_controller_cart_saveshipping_after">
+        <observer name="modify_savebilling_response" instance="Mobicommerce\DeliverydateCore\Observer\ModifySaveShippingResponse" />
+    </event>
+     <event name="mobicommerce_webservice_controller_checkout_cart_shippingmethod_save_before">
+        <observer name="mobicommerce_deliverydate_data_store" instance="Mobicommerce\DeliverydateCore\Observer\StoreDeliveryData" />
+    </event>
+    <event name="mobicommerce_webservice_controller_order_detail_after">
+        <observer name="modify_order_detail_deliverydate_service" instance="Mobicommerce\DeliverydateCore\Observer\ModifyOrderDetailService" />
+    </event>
+</config>

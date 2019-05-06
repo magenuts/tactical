@@ -1,0 +1,32 @@
+#row_mtemail_demo_order_id_dummy,
+#row_mtemail_demo_invoice_id_dummy,
+#row_mtemail_demo_shipment_id_dummy,
+#row_mtemail_demo_creditmemo_id_dummy{
+    display: none;
+}
+
+#row_mtemail_demo_order_id .value,
+#row_mtemail_demo_invoice_id .value,
+#row_mtemail_demo_shipment_id .value,
+#row_mtemail_demo_creditmemo_id .value {
+    position: relative;
+    padding-bottom: 30px !important;
+}
+
+button.look-up-entity {
+    position: absolute;
+    left: 0px;
+    margin-top: 5px;
+}
+
+/**#row_mtemail_demo_order_id {
+    margin-bottom: 30px;
+}
+
+#mtemail_demo_order_id[disabled="disabled"],
+#mtemail_demo_invoice_id[disabled="disabled"],
+#mtemail_demo_creditmemo_id[disabled="disabled"],
+#mtemail_demo_shipment_id[disabled="disabled"] {
+    background: #eeeeee;
+}
+*/

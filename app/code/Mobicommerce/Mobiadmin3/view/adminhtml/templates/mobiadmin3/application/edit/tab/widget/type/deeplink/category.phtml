@@ -1,0 +1,27 @@
+<?php
+$value = $this->getRequest()->getParam('link_type_value');
+$value = explode('_', $value);
+$is_checked = false;
+if(isset($value[1]) && $value[1] == '1'){
+	$is_checked = true;
+}
+?>
+
+<div class="entry-edit form-inline">
+	<div class="fieldset-wrapper">
+    	<div class="admin__fieldset-wrapper-content">
+        	<fieldset class="admin__fieldset">
+				<div class="admin__field required">
+    				<div class="admin__field-control">
+    					<div class="admin__field admin__field-option">
+							<input class="admin__control-checkbox" type="checkbox" name="category_force_product_nav" id="category_force_product_nav" <?php if($is_checked) { ?>checked="checked"<?php } ?> />
+							<label class="admin__field-label" for="category_force_product_nav"><?php echo __('Force Navigate to Product List'); ?></label>
+						</div>
+        			</div>
+        		</div>
+        	</fieldset>
+        </div>
+    </div>
+</div>
+
+<?php echo $this->getLayout()->createBlock('\Mobicommerce\Mobiadmin3\Block\Adminhtml\Applications\Grid\Widget\Deeplink\Category')->toHtml();?>

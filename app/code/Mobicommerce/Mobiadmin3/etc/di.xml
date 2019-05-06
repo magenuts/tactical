@@ -1,0 +1,46 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mobicommerce_mobiadmin3_application_listing_data_source" xsi:type="string">Mobicommerce\Mobiadmin3\Model\Resource\Applications\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Mobicommerce\Mobiadmin3\Model\Resource\Applications\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_applications3</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Mobiadmin3\Model\Resource\Applications</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mobicommerce_mobiadmin3_pushhistory_listing_data_source" xsi:type="string">Mobicommerce\Mobiadmin3\Model\ResourceModel\Pushhistory\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Mobicommerce\Mobiadmin3\Model\ResourceModel\Pushhistory\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_pushhistory</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Mobiadmin3\Model\ResourceModel\Pushhistory</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mobicommerce_mobiadmin3_devicetokens_listing_data_source" xsi:type="string">Mobicommerce\Mobiadmin3\Model\ResourceModel\Devicetokens\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--
+    <virtualType name="Mobicommerce\Mobiadmin3\Model\ResourceModel\Devicetokens\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mobicommerce_devicetokens</argument>
+            <argument name="resourceModel" xsi:type="string">Mobicommerce\Mobiadmin3\Model\ResourceModel\Devicetokens</argument>
+        </arguments>
+    </virtualType>
+    -->
+</config>
