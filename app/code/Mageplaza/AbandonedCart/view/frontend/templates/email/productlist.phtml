@@ -1,0 +1,76 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_AbandonedCart
+ * @copyright   Copyright (c) 2017-2018 Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+
+<table class="email-items">
+    <thead>
+    <tr>
+        <th class="item-info"><?php echo __('Image'); ?></th>
+        <th class="item-info"><?php echo __('Product Name'); ?></th>
+        <th class="item-qty"><?php echo __('Qty'); ?></th>
+        <th class="item-price"><?php echo __('Price'); ?></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php if (!$block->getQuote()) : ?>
+        <tr>
+            <td class="item-info">
+                <span class="product-image"><img src="<?php echo $block->getPlaceholderImage(); ?>" alt="test"/></span>
+            </td>
+            <td class="item-info">
+                <p class="product-name">Test product</p>
+            </td>
+            <td class="item-qty">
+                <span class="product-qty">0</span>
+            </td>
+            <td class="item-price">
+                <span class="product-price"><?php echo $block->getSubtotal(); ?></span>
+            </td>
+        </tr>
+    <?php endif; ?>
+    <?php if ($items = $block->getProductCollection()) : ?>
+        <?php foreach ($items as $_item) : ?>
+            <tr>
+                <td class="item-info">
+                    <span class="product-image">
+                        <img src="<?php echo $block->getProductImage($_item); ?>" alt="<?php echo $_item->getName(); ?>"/>
+                    </span>
+                </td>
+                <td class="item-info">
+                    <p class="product-name"><?php echo $block->escapeHtml($_item->getName()); ?></p>
+                </td>
+                <td class="item-qty">
+                    <span class="product-qty"><?php echo $_item->getQtyOrder(); ?></span>
+                </td>
+                <td class="item-price">
+                    <span class="product-price"><?php echo $block->getProductPrice($_item); ?></span>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+    <tfoot class="order-totals">
+        <tr class="last-item">
+            <th colspan="3" scope="row"><?php echo __('Order Total'); ?></th>
+            <td><?php echo $block->getSubtotal(); ?></td>
+        </tr>
+    </tfoot>
+</table>

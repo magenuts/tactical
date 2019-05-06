@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="mobicommerce_amdelivery_reminder" instance="Mobicommerce\Deliverydate\Cron\Reminder" method="execute">
+            <schedule>* * * * *</schedule>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,162 @@
+<?php $cat = $this->getRequest()->getParam('cat', false); ?>
+
+<form id="edit_form" action="<?php echo $this->getSaveUrl(); ?>" method="post" enctype="multipart/form-data">
+	<?php echo $block->getBlockHtml('formkey'); ?>
+	<section class="admin__page-section">
+	    <div class="admin__page-section-title">
+	        <span class="title"><?= $block->escapeHtml(__('Category Image')) ?></span>
+	    </div>
+	    <?php if(!empty($cat)): ?>
+		    <div class="admin__page-section-content">
+		        <div class="admin__page-section-item">
+		            <div class="admin__page-section-item-content">
+		            	<input type="hidden" name="widgetChange" id="widgetChange" value="0">
+		                <table class="admin__table-secondary">
+							<tr>
+								<td class="label">
+									<label for=""><?php echo __('Upload Thumbnail Image'); ?><span class="required">*</span></label>
+								</td>
+								<td class="value">
+									<input type="file" class="input-file _image_uploader" name="category_thumbnail" accept="image/*">
+									<br>
+									<small class="mbsmall"><?php echo __('(Uploaded image will be used to show on Mobile App)'); ?></small>
+								</td>
+							</tr>
+							<?php $_category = $this->getCategory(); ?>
+							<?php if($_category && $_category['mci_thumbnail']): ?>
+								<tr>
+									<td class="label">&nbsp;</td>
+									<td class="value">
+										<img src="<?php echo $block->getImageUrl('mobi_commerce/category/'); ?><?php echo $_category['mci_thumbnail']; ?>" alt="category" width="80" />
+										<br>
+										<input type="checkbox" name="delete_image_thumbnail" />Delete Image
+									</td>
+								</tr>
+							<?php endif; ?>
+
+							<tr>
+								<td class="label">
+									<label for=""><?php echo __('Upload Banner Image'); ?><span class="required">*</span></label>
+								</td>
+								<td class="value">
+									<input type="file" class="input-file _image_uploader" name="category_banner" accept="image/*">
+									<br>
+									<small class="mbsmall"><?php echo __('(Uploaded image will be used to show on Mobile App)'); ?></small>
+								</td>
+							</tr>
+							<?php if($_category && $_category['mci_banner']): ?>
+								<tr>
+									<td class="label">&nbsp;</td>
+									<td class="value">
+										<img src="<?php echo $block->getImageUrl('mobi_commerce/category/'); ?><?php echo $_category['mci_banner']; ?>" alt="category" width="200" />
+										<br>
+										<input type="checkbox" name="delete_image_banner" />Delete Image
+									</td>
+								</tr>
+							<?php endif; ?>
+						</table>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="widget-lists">
+				<?php echo $block->getLayout()->createBlock('\Magento\Backend\Block\Widget')->setTemplate('Mobicommerce_Mobiadmin3::mobiadmin3/application/edit/tab/widget/widgetlist.phtml')->toHtml();?>
+			</div>
+
+		<?php else: ?>
+			<span>
+				<?php echo __('With category widget you can define product display in the way you wanted. Select Grid, List or Image view. Configure them with as much detail as you want like pricing, reviews, product name and rating. Create widgets like product display, Shop by Category, New Arrivals and many more.'); ?>
+
+				<br><br>
+				<?php echo __('Leave blank If you don’t want to customize the landing pages'); ?>
+			</span>
+		<?php endif; ?>
+		<div class="content-widget-new1"></div>
+	</section>
+</form>
+
+<script>
+	var cat = "<?php echo $block->getRequest()->getParam('cat', false); ?>";
+
+	function savewidget()
+    {
+        document.getElementById('edit_form').submit();
+    }
+    
+    function createwidget(){
+		markWidgetChange();
+		new Ajax.Request("<?php echo $this->getUrl('mobicommerce/widget/createwidget'); ?>cat/"+cat, {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {				    
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+		            jQuery('.content-widget-new').html(json.widget_new_block);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+	}
+
+	function showwidgets(){
+		markWidgetChange();
+		var url ="<?php echo $this->getUrl('mobicommerce/widget/widgetlist'); ?>cat/"+cat;
+		new Ajax.Request(url, {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+		            jQuery('.widget-lists').html(json.widget_list_block);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+	}
+	   
+    function editbuttonclick(obj, event)  { 
+		markWidgetChange();
+		event.preventDefault();
+		var editwidgeturl = jQuery(obj).attr('href');
+		new Ajax.Request(editwidgeturl, {
+			method: 'Post',
+			parameters: {isAjax : 1},
+			onComplete: function(data) {				    
+			},
+			onSuccess: function(response){
+				var json = response.responseText.evalJSON(true);
+				if(json.status == 'success'){
+					jQuery('.content-widget-new').html(json.widget_block_content);
+				}
+				else{
+					alert(json.error);
+				}
+			},
+			onFailure: function(response){
+				var json = response.responseText.evalJSON(true);
+				alert(json.error);
+			}
+		});
+    }
+	
+	function markWidgetChange()
+	{
+		jQuery('#widgetChange').val('1');
+	}
+</script>

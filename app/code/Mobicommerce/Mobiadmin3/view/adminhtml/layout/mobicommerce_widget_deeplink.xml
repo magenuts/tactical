@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Applications\Grid\Widget\Deeplink" name="deeplink">
+			</block>
+        </referenceContainer>
+    </body>
+</page>

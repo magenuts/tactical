@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.Mobicommerce.com)
+ * @package Mobicommerce_DeliveryLocation
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="mobicommerce_webservice_controller_cart_saveshipping_after">
+        <observer name="validate_delivery_location" instance="Mobicommerce\DeliveryLocation\Observer\ValidateDeliveryLocation" />
+    </event>  
+</config>

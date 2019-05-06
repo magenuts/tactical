@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.Mobicommerce.com)
+ * @package Mobicommerce_DeliverydateCore
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Mobicommerce_DeliverydateCore" setup_version="1.3.0">
+        <sequence>
+        	<module name="Mobicommerce_Mobiservices3" />
+            <module name="Mobicommerce_Deliverydate" />
+        </sequence>
+    </module>
+</config>

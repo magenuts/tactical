@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobicommerce Team
+ * @copyright Copyright (c) 2018 Mobicommerce (https://www.mobicommerce.com)
+ * @package Mobicommerce_Deliverydate
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mobicommerce_Deliverydate::deliverydate" title="Delivery Date" module="Mobicommerce_Deliverydate" parent="Mobicommerce_Mobiadmin3::root" sortOrder="100" resource="Mobicommerce_Deliverydate::deliverydate"/>
+
+        <add id="Mobicommerce_Deliverydate::deliverydate_holidays" title="Exceptions: Working Days and Holidays" sortOrder="10" module="Mobicommerce_Deliverydate" parent="Mobicommerce_Deliverydate::deliverydate" action="mobicommerce_deliverydate/holidays/" resource="Mobicommerce_Deliverydate::deliverydate_holidays"/>
+
+        <add id="Mobicommerce_Deliverydate::deliverydate_dinterval" title="Exceptions: Date Intervals" sortOrder="20" module="Mobicommerce_Deliverydate" parent="Mobicommerce_Deliverydate::deliverydate" action="mobicommerce_deliverydate/dinterval/" resource="Mobicommerce_Deliverydate::deliverydate_dinterval"/>
+
+        <add id="Mobicommerce_Deliverydate::deliverydate_tinterval" title="Time Intervals" sortOrder="30" module="Mobicommerce_Deliverydate" parent="Mobicommerce_Deliverydate::deliverydate" action="mobicommerce_deliverydate/tinterval/" resource="Mobicommerce_Deliverydate::deliverydate_tinterval"/>
+    </menu>
+</config>

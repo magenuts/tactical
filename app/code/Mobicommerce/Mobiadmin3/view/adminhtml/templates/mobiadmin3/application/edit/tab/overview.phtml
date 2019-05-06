@@ -1,0 +1,258 @@
+<?php
+$applicationData          = $this->getRegistry()->registry('application_data');
+$applicationKey           = $applicationData->getAppKey();
+$applicationName          = $applicationData->getAppName();
+$applicationCreatedTime   = $applicationData->getCreatedTime();
+$applicationAndroidUrl    = $applicationData->getAndroidUrl();
+$applicationAndroidStatus = $applicationData->getAndroidStatus();
+$applicationCreatedTime   = strtotime($applicationCreatedTime);
+$licenseType              = $applicationData->getAppMode();
+$addonParams              = @unserialize($applicationData->getAddonParameters());
+?>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('App Details [Website]')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+	                <tr>
+	                    <th><?= $block->escapeHtml(__('App Name')) ?></th>
+	                    <td><?= $block->escapeHtml($applicationName) ?></td>
+	                </tr>
+	                <tr>
+	                    <th><?= $block->escapeHtml(__('App Key')) ?></th>
+	                    <td><?= $block->escapeHtml($applicationKey) ?></td>
+	                </tr>
+	                <tr>
+						<th><?php echo __('MobiCommerce Version')?></th>
+						<td>
+							<?php $version = $applicationData->getVersionType(); ?>
+							<?php
+								if(!in_array($version, ['001', '002']))
+									echo "Professional";
+								else if($version == '001')
+									echo "Professional";
+								else if($version == '002')
+									echo "Enterprise";
+							?>
+						</td>
+					</tr>
+					<tr>
+						<th><?php echo __('License Type')?></th>
+						<td>
+						    <?php echo $licenseType.' Version '; ?>
+						</td>
+					</tr>
+					<tr>
+						<th><?php echo __('Created Date')?></th>
+						<td><?= $block->formatDate($block->getOrderAdminDate($applicationCreatedTime), \IntlDateFormatter::MEDIUM, true); ?></td>
+					</tr>
+	            </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="admin__page-section">
+	<?php if($licenseType == 'demo'): ?>
+	    <div class="admin__page-section-title">
+	        <span class="title"><?= $block->escapeHtml(__('Android App [Website]')) ?></span>
+	    </div>
+
+	    <div class="admin__page-section-content">
+	        <div class="admin__page-section-item">
+	            <div class="admin__page-section-item-content">
+	                <table class="admin__table-secondary">
+		                <tr>
+		                    <th><?= $block->escapeHtml(__('Android App Status')) ?></th>
+		                    <td><?= $block->escapeHtml($applicationAndroidStatus) ?></td>
+		                </tr>
+
+		                <tr>
+		                    <th><?= $block->escapeHtml(__('Download Android App')) ?></th>
+		                    <td>
+		                    	<?php if(!empty($applicationAndroidUrl)):?>
+									<strong><?php echo $applicationAndroidUrl;?></strong>
+									<a href="javascript:void(0);" id="emailme_fancybox" class="email-me-fancybox"><?php echo __('Email me this URL')?></a> 
+									|
+									<a class="qr-code-fancybox" id="qr_code_fancybox" href="javascript:void(0);"><?php echo __('QR Code of this URL')?></a>
+									<div id="popup-qrcode" style="display:none;">
+									    <img src="<?php echo 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='.$applicationAndroidUrl.'&choe=UTF-8'?>"/>
+									</div>
+
+									<div id="popup-emailme" style="display:none;">
+										<div class="admin__field">
+										    <label class="admin__field-label">
+										        <span >Enter your Email Address</span>
+										    </label>
+										    <div class="admin__field-control">
+												<input class="admin__control-text" type="text" name="emailid" />
+												<input type="hidden" name="url" class="app-url"  value="<?php echo $applicationAndroidUrl;?>"/>
+												<div class="admin__field-note">
+										            <span>Android URL will be sent to this email address</span>
+										        </div>
+										    </div>
+										</div>
+									</div>
+									<?php endif;?>
+		                    </td>
+		                </tr>
+		                <?php if(!empty($applicationAndroidUrl)): ?>
+		                	<tr>
+		                		<td colspan ="2">
+									<?php echo __('Open the above URL in your android phone browser, it will download the mobile app in your mobile device')?><br>
+									<?php echo __('If you have any mobicommerce demo app installed in your mobile device please uninstall that before installing a new mobicommerce demo app')?>
+								</td>
+		                	</tr>
+		               	<?php endif; ?>
+		            </table>
+		        </div>
+		    </div>
+		</div>
+	<?php endif; ?>
+
+	<?php if($licenseType == 'live'):?>
+		<div class="admin__page-section-title">
+	        <span class="title"><?= $block->escapeHtml(__('Android App Deliverables [Website]')) ?></span>
+	    </div>
+
+	    <div class="admin__page-section-content">
+	        <div class="admin__page-section-item">
+	            <div class="admin__page-section-item-content">
+	                <table class="admin__table-secondary">
+		                <tr>
+		                    <th><?= $block->escapeHtml(__('Android Status')) ?></th>
+		                    <td><?= $block->escapeHtml($applicationAndroidStatus) ?></td>
+		                </tr>
+
+		                <tr>
+		                    <th><?= $block->escapeHtml(__('Download Android Deliverables')) ?></th>
+		                    <td>
+		                    	<?php if(!empty($applicationAndroidUrl)):?>
+									<strong><?php echo $applicationAndroidUrl;?></strong>
+									<a href="#emailmeandroidliveurl" class="email-me-fancybox" onclick="popupemail(this)"><?php echo __('Email me this URL')?></a> 
+									| 
+									<a class="qr-code-fancybox" id="qr_code_fancybox" href="javascript:void(0);"><?php echo __('QR Code of this URL')?></a>
+									<div id="popup-qrcode" style="display:none;">
+									    <img src="<?php echo 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='.$applicationAndroidUrl.'&choe=UTF-8'?>"/>
+									</div>
+
+									<div id="popup-emailme" style="display:none;">
+										<div class="admin__field">
+										    <label class="admin__field-label">
+										        <span >Enter your Email Address</span>
+										    </label>
+										    <div class="admin__field-control">
+												<input class="admin__control-text" type="text" name="emailid" />
+												<input type="hidden" name="url" class="app-url"  value="<?php echo $applicationAndroidUrl;?>"/>
+												<div class="admin__field-note">
+										            <span>Android URL will be sent to this email address</span>
+										        </div>
+										    </div>
+										</div>
+									</div>
+									<?php else:?>
+									<span><?php echo __('It will take 2-3 days to prepare your deliverables.') ?></span>
+								<?php endif;?>
+		                    </td>
+		                </tr>
+		            </table>
+		        </div>
+		    </div>
+		</div>
+	<?php endif; ?>	
+</section>
+
+<script type="text/javascript">
+	require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            jQuery,
+            modal
+        ) {
+        	var that = this;
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: '',
+                buttons: []
+            };
+
+            if(jQuery('#popup-qrcode').length) {
+            	var popup = modal(options, jQuery('#popup-qrcode'));
+	            jQuery("#qr_code_fancybox").on('click',function(){ 
+	                jQuery("#popup-qrcode").modal("openModal");
+	            });
+            }
+
+			var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: '',
+                buttons: [{
+				    text: 'Send Email',
+				    class: '',
+				    click: function() {
+				    	var emailid = jQuery('input[name=emailid]').val();
+				    	var appurl = jQuery('.app-url').val();
+
+						if(emailid == '') {
+				            alert('Please insert Email Address');
+						} else{
+							if(appurl !='')
+							{
+								if(IsEmail(emailid)) {
+									new Ajax.Request("<?php echo $block->getUrl('mobicommerce/application/sendemail')?>", {
+										method: 'Post',
+										parameters: {emailid : emailid, appurl : appurl, templatetype : ''},
+										onComplete: function(data) {				    
+										},
+										onSuccess: function(response){
+											var json = response.responseText.evalJSON(true);
+											if(json.status == 'success'){
+												console.log(json.success);
+												alert(json.success);
+												that.closeModel();
+											}
+											else{
+												alert(json.error);
+											}
+										},
+										onFailure: function(response){
+											alert('Oops, something wrong happned');
+										}
+									});
+								} 
+								else
+								{
+									alert('Please enter email address');
+								}
+							}
+						}
+				    	
+				    }
+				}]
+            };
+            
+            if(jQuery('#popup-emailme').length) {
+            	var popup = modal(options, jQuery('#popup-emailme'));
+	            jQuery("#emailme_fancybox").on('click',function(){ 
+	                jQuery("#popup-emailme").modal("openModal");
+	            });
+            }
+        }
+    );
+
+    function IsEmail(email) {
+	  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  return regex.test(email);
+	}
+</script>

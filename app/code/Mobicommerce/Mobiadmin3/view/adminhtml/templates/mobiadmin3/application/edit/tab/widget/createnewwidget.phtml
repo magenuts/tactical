@@ -1,0 +1,59 @@
+<div class="widget-new-container">
+    <div class="entry-edit form-inline">
+		<div class="fieldset-wrapper">
+	    	<div class="admin__fieldset-wrapper-content _hide">
+	        	<fieldset class="fieldset admin__fieldset ">
+	        		<legend class="admin__legend legend">
+		                <span><?= $block->escapeHtml(__('New Widget')) ?></span>
+		            </legend>
+					<div class="admin__field required">
+	    				<label class="admin__field-label">
+	        				<span><?php echo __('Select Widget'); ?></span>
+	    				</label>
+	    				<div class="admin__field-control">
+							<select class="admin__control-select" name="widget[selected_widget]" onchange="callwidget(this.value)">
+							    <option value=""><?php echo __('Select Widget')?></option>
+							    <option value="widget_image_slider"><?php echo __('Image Slider')?></option>
+							    <option value="widget_category"><?php echo __('Category')?></option>
+							    <option value="widget_product_slider"><?php echo __('Product List')?></option>
+							    <option value="widget_image"><?php echo __('Image')?></option>
+							</select>
+							<div class="note admin__field-note">Select the type of Widget you want to create</div>
+	        			</div>
+	        		</div>
+	        	</fieldset>
+	        </div>
+	    </div>
+	</div>
+</div>
+<div class="widget-selected-content"></div>
+
+<script>
+	var cat = "<?php echo $this->getRequest()->getParam('cat', false); ?>";
+    function callwidget(selectedwidget)
+    {
+		if(selectedwidget != 0){
+			new Ajax.Request("<?php echo $this->getUrl('mobicommerce/widget/callwidget'); ?>cat/"+cat, {
+				method: 'Post',
+				parameters: {isAjax : 1, widget_code : selectedwidget},
+				onComplete: function(data) {				    
+				},
+				onSuccess: function(response){
+					var json = response.responseText.evalJSON(true);
+					if(json.status == 'success'){
+						jQuery('.widget-selected-content').html(json.widget_block_content);
+					}
+					else{
+						alert(json.error);
+					}
+				},
+				onFailure: function(response){
+					var json = response.responseText.evalJSON(true);
+					alert(json.error);
+				}
+			});
+		}else {
+			jQuery('.widget-selected-content').html('');
+		}
+	}
+</script>

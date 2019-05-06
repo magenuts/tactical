@@ -1,0 +1,19 @@
+{
+    "name": "weprovide/magento2-module-fix-duplicate",
+    "description": "Magento 2 | Fix Duplicate for linked product(s)",
+    "authors": [
+        {
+            "name": "We/Provide",
+            "email": "info@weprovide.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WeProvide\\FixDuplicate\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

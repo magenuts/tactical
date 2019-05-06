@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+	<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Email/etc/email_templates.xsd">
+	<template id="email_template_mobicommerce_sendqrcode" label="MobiCommerce QR code template" file="qrcode_template.html" type="text" module="Mobicommerce_Mobiadmin3" area="adminhtml"/>
+</config>

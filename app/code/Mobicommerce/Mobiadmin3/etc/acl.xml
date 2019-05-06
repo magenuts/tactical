@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Mobicommerce_Mobiadmin3::admin" title="Mobicommerce">
+                    <resource id="Mobicommerce_Mobiadmin3::createapplication" title="Create New App" sortOrder="10"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::manageapplication" title="Manage Applications" sortOrder="20"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::labelsmessages" title="Labels and Messages" sortOrder="30"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::categorywidgets" title="Category Widgets" sortOrder="40"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::social_configuration" title="Social Configuration" sortOrder="50"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::push_notification_history" title="Push Notification History" sortOrder="60"></resource>
+                    <resource id="Mobicommerce_Mobiadmin3::devicetokens" title="Device Tokens" sortOrder="70"></resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

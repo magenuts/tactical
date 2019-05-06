@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mobi Commerce <info@mobicommerce.com>
+ * @copyright 2017 Mobicommerce.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mobi_deliverylocation" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Delivery Location</label>
+            <tab>mobicommerce</tab>
+            <resource>Mobicommerce_DeliveryLocation::delverylocation</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Delivery Location</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Delivery Location</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="admin_validation_enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Validation On Admin Order Create </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="validate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Address Validation</label>                  
+                
+                <field id="errormessage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Error Message</label>
+                </field>
+                <field id="country_enable" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Country</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="country" translate="label" type="multiselect" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <comment>Only select which you want allow address for whole country</comment>
+                    <depends>
+                        <field id="country_enable">1</field>
+                    </depends>
+                </field>
+                <field id="state_enable" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable State</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="state" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed States</label>
+                    <comment>Only add comma separated state which you want allow address for whole states</comment>
+                    <depends>
+                        <field id="state_enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="city_enable" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable City</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="city" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed Cities</label>
+                    <comment>Only add comma separated city which you want allow address for whole city</comment>
+                    <depends>
+                        <field id="city_enable">1</field>
+                    </depends>
+                </field>
+                <field id="zipcode_enable" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Zipcode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="zipcode" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allowed Zipcodes</label>
+                    <comment>Enter comma separated zipcode</comment>
+                    <depends>
+                        <field id="zipcode_enable">1</field>
+                    </depends>
+                </field>
+                <field id="adv_validation_enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Advance Validation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="adv_validation" translate="label" type="textarea" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Advance Validation Cilties List</label>
+                    <comment><![CDATA[Only enter not allowed city sequence. Enter each comma separated line with sequance of Country Code,State,City. <br> EX. <br>US,New York,Middletown <br>AU,Victoria,Melbourne]]></comment>
+                    <depends>
+                        <field id="adv_validation_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

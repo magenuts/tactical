@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <body>
+        <reference name="root">
+            <block output="1" class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Applications\Grid\Widget\Category" name="root"/>
+        </reference>
+    </body>
+</page>

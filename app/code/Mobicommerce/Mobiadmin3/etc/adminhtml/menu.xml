@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Mobicommerce_Mobiadmin3::applicationNew"
+			title="Create New Mobile App"
+			module="Mobicommerce_Mobiadmin3"
+			sortOrder="10"
+			action="mobicommerce/application/new"
+			resource="Mobicommerce_Mobiadmin3::createapplication"
+			parent="Mobicommerce_Mobiadmin3::root"/>
+
+		<add id="Mobicommerce_Mobiadmin3::applicationIndex"
+			title="Manage Mobile Apps"
+			module="Mobicommerce_Mobiadmin3"
+			sortOrder="20"
+			action="mobicommerce/application/index"
+			resource="Mobicommerce_Mobiadmin3::manageapplication"
+			parent="Mobicommerce_Mobiadmin3::root"/>
+
+		<add id="Mobicommerce_Mobiadmin3::applicationLabelsmessages"
+			title="Manage Labels and Messages"
+			module="Mobicommerce_Mobiadmin3"
+			sortOrder="30"
+			action="mobicommerce/application/labelsmessages"
+			resource="Mobicommerce_Mobiadmin3::labelsmessages"
+			parent="Mobicommerce_Mobiadmin3::root"/>
+
+		<add id="Mobicommerce_Mobiadmin3::categoryWidget"
+			title="Category Widget"
+			module="Mobicommerce_Mobiadmin3"
+			sortOrder="40"
+			action="mobicommerce/category/widget"
+			resource="Mobicommerce_Mobiadmin3::categorywidgets"
+			parent="Mobicommerce_Mobiadmin3::root"/>
+
+		<add id="Mobicommerce_Mobiadmin3::social_configuration"
+			title="Social Login"
+			module="Mobicommerce_Mobiadmin3"
+			sortOrder="50"
+			parent="Mobicommerce_Mobiadmin3::root"
+			action="adminhtml/system_config/edit/section/mobisociallogin3"
+			resource="Mobicommerce_Mobiadmin3::social_configuration"/>
+
+		<add id="Mobicommerec_Mobiadmin3::push_notification_history"
+            title="Push Notification History"
+            module="Mobicommerec_Mobiadmin3"
+            sortOrder="60"
+            action="mobicommerce/pushhistory/index"
+            parent="Mobicommerce_Mobiadmin3::root"
+            resource="Mobicommerce_Mobiadmin3::push_notification_history" />
+
+        <add id="Mobicommerec_Mobiadmin3::devicetokens"
+            title="Device Tokens"
+            module="Mobicommerec_Mobiadmin3"
+            sortOrder="70"
+            action="mobicommerce/devicetokens/index"
+            parent="Mobicommerce_Mobiadmin3::root"
+            resource="Mobicommerce_Mobiadmin3::devicetokens" />
+	</menu>
+</config>

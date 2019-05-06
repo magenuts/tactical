@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <update handle="editor"/>
+	  <body>
+        <referenceContainer name="content">
+            <block class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Labelsmessages\Edit" name="mobicommerce_labelmessages_edit"/>
+        </referenceContainer>
+        
+        <referenceContainer name="left">
+            <referenceContainer name="page.main.actions">
+                <block class="Magento\Backend\Block\Store\Switcher" name="category.store.switcher" template="Mobicommerce_Mobiadmin3::mobiadmin3/labelsmessages/store/switcher.phtml"/>
+            </referenceContainer>
+            <block class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Labelsmessages\Edit\Tabs" name="mobicommerce_labelmessages_edit_tabs">
+                <block class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Labelsmessages\Edit\Tab\Labels" name="mobicommerce_labelmessages_edit_tab_labels"/>
+                <block class="Mobicommerce\Mobiadmin3\Block\Adminhtml\Labelsmessages\Edit\Tab\Messages" name="mobicommerce_labelmessages_edit_tab_messages"/>
+                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">label_section</argument>
+                    <argument name="block" xsi:type="string">mobicommerce_labelmessages_edit_tab_labels</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">messages_section</argument>
+                    <argument name="block" xsi:type="string">mobicommerce_labelmessages_edit_tab_messages</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

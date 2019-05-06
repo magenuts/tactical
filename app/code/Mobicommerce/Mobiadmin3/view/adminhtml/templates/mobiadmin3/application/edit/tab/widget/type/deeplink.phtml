@@ -1,0 +1,111 @@
+<div class="entry-edit form-inline">
+	<div class="fieldset-wrapper">
+    	<div class="admin__fieldset-wrapper-content">
+        	<fieldset class="admin__fieldset">
+				<div class="admin__field required">
+    				<label class="admin__field-label">
+        				<span><?php echo __('Choose Linktype'); ?></span>
+    				</label>
+    				<div class="admin__field-control">
+						<select class="admin__control-select" id="popuplinktype" onchange="selectlinktype()">
+						  	<option value="0"><?php echo __('Select'); ?></option>
+						  	<option value="product"><?php echo __('Product Page'); ?></option>
+						  	<option value="category"><?php echo __('Category Page'); ?></option>
+						  	<option value="cms"><?php echo __('Cms Page'); ?></option>
+						  	<option value="phone"><?php echo __('Phone Call'); ?></option>
+						  	<option value="email"><?php echo __('Email'); ?></option>
+						  	<option value="external"><?php echo __('External Webpage Link'); ?></option>
+						  	<option value="qrscan"><?php echo __('QR Code Scan'); ?></option>
+						</select>
+						<div class="note admin__field-note">Select the type page or link you want to link to</div>
+        			</div>
+        		</div>
+        	</fieldset>
+        </div>
+    </div>
+</div>
+
+<div class="link-response-content"></div>
+
+<script>
+   	<?php
+   	$link = $this->getRequest()->getParam('link');
+   	if(!empty($link)):
+	   	$linkparts = explode("||", $link);
+	   	?>
+       	selectedlinktype = "<?php echo $linkparts['0']?>";
+	   	jQuery('#popuplinktype').val(selectedlinktype);
+	   	selectlinktype();
+   	<?php endif; ?>
+   	function selectlinktype() {
+   		var url = "<?php echo $this->getUrl('mobicommerce/widget/linktype'); ?>";
+   		var cat = "<?php echo $this->getRequest()->getParam('cat', false); ?>";
+
+   		if(cat) {
+   			url = url + "cat/"+cat;
+   		}
+	   	var selectedlinktype = jQuery( "#popuplinktype option:selected" ).val();
+	   	<?php
+	   	$link = $this->getRequest()->getParam('link');
+	   	$linkparts = @explode("||", $link);
+	   	?>
+	   	var selectedlinktypevalue = "<?php echo @$linkparts['1']?>";
+	   	if(selectedlinktype != 0){
+		   	new Ajax.Request(url, {
+			    method: 'POST',
+				parameters: {isAjax: 1, link_type: selectedlinktype, link_type_value: selectedlinktypevalue},
+				onSuccess: function(response) {
+					jQuery('.link-response-content').html(response.responseText);
+				},
+				onError: function(response){
+					var json = response;
+				}
+		   });
+	   	} else {
+		   jQuery('.link-response-content').html('');
+	   	}
+   	}
+
+   	function savedeeplink() {
+	   	var bannerid = "<?php echo $this->getRequest()->getParam('bannerid')?>";
+	   	var bannerIndex = '#banner_row_link_'+bannerid;
+       	var type = jQuery('#popuplinktype').val();
+
+	   	if(type == "0"){
+		   	alert("Please select link type");
+		   	return false;
+	   	}
+
+	   	if (type == 'product' || type == 'category' || type == 'cms') {
+	       	var typevalue =  jQuery("input[name=radiochecked]:checked").val();
+		   	if(typevalue == ""){
+			   	alert("Please select an Item");
+			   	return false;
+		   	}
+	   }else{
+		   	var typevalue = jQuery('.linktypevalue').val();
+		   	if(!typevalue){
+			   	alert("Please insert value");
+               	return false;
+		   	}
+	   	}
+	   	if(jQuery('#category_force_product_nav').length){
+	   		if(jQuery('#category_force_product_nav').is(':checked')){
+	   			typevalue = typevalue + '_1';
+	   		}
+	   		else{
+	   			typevalue = typevalue + '_0';
+	   		}
+	   	}
+	   	var link = type+'||'+typevalue;
+	   	if(bannerid == 'linkURL'){
+	   		parent.jQuery(".image-map-iframe").contents().find("#linkURL").val(link);
+	   		parent.jQuery('.image-map-iframe')[0].contentWindow.updateSelectedLink();
+	   	}
+	   	else{
+	   		jQuery('#'+bannerid).val(link);
+	   	}
+	   	parent.jQuery(".image-map-iframe").contents().find('#step2End').click();
+	   	return true;
+   	}
+</script>

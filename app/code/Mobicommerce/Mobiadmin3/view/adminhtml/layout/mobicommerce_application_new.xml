@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left">
+	<body>
+		<referenceContainer name="content">
+            <uiComponent name="mobiadmin3_application_new"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+        	<block template="Mobicommerce_Mobiadmin3::mobiadmin3/application/support.phtml" class="Magento\Framework\View\Element\Template" name="support"/>
+        </referenceContainer>
+	</body>
+</page>

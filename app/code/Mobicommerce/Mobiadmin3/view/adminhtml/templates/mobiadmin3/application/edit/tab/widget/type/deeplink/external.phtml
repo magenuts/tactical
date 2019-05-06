@@ -1,0 +1,21 @@
+<?php
+$link_type_value = $this->getRequest()->getParam('link_type_value');
+?>
+
+<div class="entry-edit form-inline">
+	<div class="fieldset-wrapper">
+    	<div class="admin__fieldset-wrapper-content">
+        	<fieldset class="admin__fieldset">
+				<div class="admin__field required">
+    				<label class="admin__field-label">
+        				<span><?php echo __('External Webpage URL'); ?></span>
+    				</label>
+    				<div class="admin__field-control">
+						<input type="text" class="linktypevalue required-entry input-text required-entry admin__control-text" value="<?php echo $link_type_value; ?>" name="value">
+						<div class="note admin__field-note"><?php __('Enter web page url starting with http:// or https://'); ?></div>
+        			</div>
+        		</div>
+        	</fieldset>
+        </div>
+    </div>
+</div>

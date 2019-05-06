@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+	   <add id="Mobicommerce_Mobiadmin3::root" title="MobiCommerce 3.0" module="Mobicommerce_Mobiadmin3" sortOrder="51" resource="Mobicommerce_Mobiadmin3::root"/>       
+    </menu>
+</config>

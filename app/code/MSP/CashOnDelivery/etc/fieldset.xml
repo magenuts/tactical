@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * IDEALIAGroup srl
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@idealiagroup.com so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_CashOnDelivery
+ * @copyright  Copyright (c) 2016 IDEALIAGroup srl (http://www.idealiagroup.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+
+    <!-- TODO: Does it really work? -->
+    <!-- See: https://github.com/magento/magento2/issues/5823 -->
+    <!-- Workaround is in observer sales_model_service_quote_submit_before -->
+    <scope id="global">
+        <fieldset id="sales_convert_quote">
+            <field name="msp_cod_amount">
+                <aspect name="to_order" />
+            </field>
+            <field name="base_msp_cod_amount">
+                <aspect name="to_order" />
+            </field>
+            <field name="msp_cod_tax_amount">
+                <aspect name="to_order" />
+            </field>
+            <field name="base_msp_cod_tax_amount">
+                <aspect name="to_order" />
+            </field>
+        </fieldset>
+    </scope>
+</config>

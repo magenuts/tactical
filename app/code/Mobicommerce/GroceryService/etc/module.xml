@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Mobicommerce\GoogleAddressLookup
+ * @author Mobi Commerce <info@mobicommerce.com>
+ * @copyright 2017 Mobicommerce Sp. z o.o.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Mobicommerce_GroceryService" setup_version="1.0.0">  
+    	<sequence>
+            <module name="Mobicommerce_Mobiservices3" />
+        </sequence>      
+    </module>
+</config>
